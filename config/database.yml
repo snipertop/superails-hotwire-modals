@@ -28,8 +28,77 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: hotwire_modals_development
+  primary:
+    <<: *default
+    database: hotwire_modals_development
+  primary_replica:
+    <<: *default
+    database: hotwire_modals_development
+    replica: true
+  animals:
+    adapter: mysql2
+    encoding: utf8mb4
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    host: 59.70.116.174
+    port: 3306
+    database: absolute_development
+    username: root
+    password: root
+    migrations_paths: db/animals_migrate
+    database_tasks: false
+  animals_replica:
+    adapter: mysql2
+    encoding: utf8mb4
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    host: 59.70.116.174
+    port: 3306
+    database: absolute_development
+    username: root
+    password: root
+    replica: true
+  books:
+    adapter: mysql2
+    encoding: utf8mb4
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    host: 59.70.112.142
+    port: 3306
+    database: abandon_development
+    username: root
+    password: ubuntu171024
+    migrations_paths: db/animals_migrate
+    database_tasks: false
+  books_replica:
+    adapter: mysql2
+    encoding: utf8mb4
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    host: 59.70.112.142
+    port: 3306
+    database: abandon_development
+    username: root
+    password: ubuntu171024
+    replica: true
+  books:
+    adapter: mysql2
+    encoding: utf8mb4
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    host: 59.70.112.142
+    port: 3306
+    database: abandon_development
+    username: root
+    password: ubuntu171024
+    migrations_paths: db/animals_migrate
+    database_tasks: false
+  books_replica:
+    adapter: mysql2
+    encoding: utf8mb4
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    host: 59.70.112.142
+    port: 3306
+    database: abandon_development
+    username: root
+    password: ubuntu171024
+    replica: true
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

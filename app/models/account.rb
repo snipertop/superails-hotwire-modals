@@ -1,0 +1,2 @@
+class Account < AnimalsRecord
+end
